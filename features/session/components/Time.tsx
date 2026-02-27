@@ -16,7 +16,11 @@ export const Time = (props: TimeProps) => {
   const minutesSum = minutes + hours * 60;
 
   return (
-    <ThemedText type="title" onPress={() => setShowSeconds((show) => !show)}>
+    <ThemedText
+      style={{ textAlign: "center", color }}
+      type="bigTitle"
+      onPress={() => setShowSeconds((show) => !show)}
+    >
       {showSeconds ? (
         formatTimeWithSeconds(minutesSum, seconds)
       ) : (

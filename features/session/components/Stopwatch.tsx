@@ -4,7 +4,7 @@ import { useContext, useEffect, useMemo, useState } from "react";
 import { ThemedText } from "@/components/themed-text";
 import { ThemedView } from "@/components/themed-view";
 import { TasksContext } from "@/shared/providers/TasksContextProvider";
-import { Button, TextInput } from "react-native";
+import { Button, StyleSheet, TextInput } from "react-native";
 import { useStopwatch } from "react-timer-hook";
 import { Time } from "./Time";
 const audioSource = require("@/assets/audio/alarm.mp3");
@@ -30,13 +30,10 @@ const Stopwatch = ({ handleRest }: StopwatchProps) => {
   useEffect(() => {
     let interval: number | null = null;
     if (isTimeCompleted) {
-      interval = setInterval(
-        () => {
-          player.seekTo(0);
-          player.play();
-        },
-        30 * 60 * 1000,
-      );
+      interval = setInterval(() => {
+        player.seekTo(0);
+        player.play();
+      }, 30 * 60 * 1000);
     }
     return () => {
       if (interval) {
@@ -78,9 +75,12 @@ const Stopwatch = ({ handleRest }: StopwatchProps) => {
         />
       </ThemedView>
       <ThemedView>
-        <ThemedView>
-          <ThemedText>Duration, min</ThemedText>
+        <ThemedView style={{ margin: "auto" }}>
+          <ThemedText lightColor="grey" disabled>
+            Duration, min
+          </ThemedText>
           <TextInput
+            style={styles.input}
             value={(isNaN(focusTime) ? "" : focusTime).toString()}
             autoFocus
             onChangeText={(e) => setFocusTime(parseInt(e))}
@@ -100,5 +100,14 @@ const Stopwatch = ({ handleRest }: StopwatchProps) => {
     </ThemedView>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    borderColor: "grey",
+    borderWidth: 1,
+    borderRadius: 5,
+    marginBottom: 20,
+  },
+});
 
 export default Stopwatch;

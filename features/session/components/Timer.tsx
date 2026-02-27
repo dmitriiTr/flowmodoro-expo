@@ -37,12 +37,16 @@ const Timer = (props: TimerProps) => {
     <ThemedView>
       <ThemedView>
         {isTimeUp ? (
-          <ThemedText>Time&apos;s Up</ThemedText>
+          <ThemedText centered type="bigTitle">
+            Time&apos;s Up
+          </ThemedText>
         ) : (
           <Time hours={hours} minutes={minutes} seconds={seconds} />
         )}
       </ThemedView>
-      <Button onPress={handleExitClick} title="End rest"></Button>
+      <ThemedView style={{ margin: "auto" }}>
+        <Button onPress={handleExitClick} title="End rest"></Button>
+      </ThemedView>
     </ThemedView>
   );
 };

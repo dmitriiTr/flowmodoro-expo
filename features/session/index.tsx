@@ -25,8 +25,10 @@ const Clock = () => {
       {isShowTimer ? (
         <>
           <ThemedView>
-            <ThemedText type="subtitle">Task: Rest</ThemedText>
-            <ThemedText>
+            <ThemedText centered type="subtitle">
+              Task: Rest
+            </ThemedText>
+            <ThemedText centered>
               focused for{" "}
               {secondsToRoundedMinutes(totalTimeForCurrentActivityToday)} min
             </ThemedText>
@@ -39,7 +41,9 @@ const Clock = () => {
       ) : (
         <>
           <ThemedView>
-            <ThemedText type="subtitle">Task: {activity}</ThemedText>
+            <ThemedText centered type="subtitle">
+              Task: {activity}
+            </ThemedText>
           </ThemedView>
           <Stopwatch handleRest={onRest} />
         </>

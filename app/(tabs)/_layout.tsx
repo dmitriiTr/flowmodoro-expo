@@ -36,9 +36,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="clock"
+        name="session"
         options={{
-          title: "Clock",
+          title: "Session",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="clock" color={color} />
           ),
