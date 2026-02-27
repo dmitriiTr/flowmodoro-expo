@@ -19,7 +19,7 @@ export const TasksTable = ({ tasks }: { tasks: Task[] }) => {
   });
 
   return (
-    <ThemedView>
+    <ThemedView style={styles.tableContainer}>
       <FlatList
         data={tasksMapped}
         renderItem={({ item }) => {
@@ -37,9 +37,15 @@ export const TasksTable = ({ tasks }: { tasks: Task[] }) => {
 };
 
 const styles = StyleSheet.create({
+  tableContainer: {
+    marginLeft: 20,
+    marginRight: 20,
+  },
   tableRow: {
     display: "flex",
     justifyContent: "space-between",
     flexDirection: "row",
+    borderColor: "grey",
+    borderBottomWidth: 0.5,
   },
 });
