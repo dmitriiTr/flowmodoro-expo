@@ -1,6 +1,6 @@
+import { ThemedText } from "@/components/themed-text";
 import { useState } from "react";
-import { ThemedText } from "../themed-text";
-import { formatTimeWithSeconds } from "./utils";
+import { formatTimeWithSeconds } from "../utils";
 
 interface TimeProps {
   hours: number;

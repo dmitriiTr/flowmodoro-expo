@@ -1,18 +1,13 @@
 import { useContext, useState } from "react";
 
-import { Button } from "react-native";
-import { ThemedText } from "../themed-text";
-import { ThemedView } from "../themed-view";
-import Stopwatch from "./Stopwatch";
-import { TasksContext } from "./TasksContextProvider";
-import Timer from "./Timer";
-import { secondsToRoundedMinutes } from "./utils";
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { TasksContext } from "@/shared/providers/TasksContextProvider";
+import { secondsToRoundedMinutes } from "@/shared/utils";
+import Stopwatch from "./components/Stopwatch";
+import Timer from "./components/Timer";
 
-interface ClockProps {
-  goToResults: VoidFunction;
-}
-
-const Clock = ({ goToResults }: ClockProps) => {
+const Clock = () => {
   const { activity, totalTimeForCurrentActivityToday, handleRest } =
     useContext(TasksContext)!;
 
@@ -49,7 +44,6 @@ const Clock = ({ goToResults }: ClockProps) => {
           <Stopwatch handleRest={onRest} />
         </>
       )}
-      <Button title="Exit" onPress={() => goToResults()} />
     </>
   );
 };

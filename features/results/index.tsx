@@ -1,19 +1,14 @@
+import { TasksContext } from "@/shared/providers/TasksContextProvider";
 import { Picker } from "@react-native-picker/picker";
-import { TasksContext } from "./TasksContextProvider";
 
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { activities } from "@/shared/constants/common";
+import { Activity } from "@/shared/types";
 import { useContext } from "react";
-import { Button } from "react-native";
-import { ThemedText } from "../themed-text";
-import { ThemedView } from "../themed-view";
-import { activities } from "./constants";
-import { TasksTable } from "./TasksTable";
-import { Activity } from "./types";
+import { TasksTable } from "./components/TasksTable";
 
-interface ResultsProps {
-  goToClock: VoidFunction;
-}
-
-const Results = ({ goToClock }: ResultsProps) => {
+const Results = () => {
   const { tasks, activity, handleActivitySelect } = useContext(TasksContext)!;
 
   const onChangeActivity = (value: Activity) => {
@@ -22,7 +17,6 @@ const Results = ({ goToClock }: ResultsProps) => {
 
   return (
     <ThemedView>
-      <Button title="Start" onPress={() => goToClock()} />
       <ThemedText>Activity:</ThemedText>
       <Picker selectedValue={activity} onValueChange={onChangeActivity}>
         {activities.map((a) => (

@@ -1,13 +1,13 @@
 import { useAudioPlayer } from "expo-audio";
 import { useContext, useEffect, useMemo, useState } from "react";
 
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { TasksContext } from "@/shared/providers/TasksContextProvider";
 import { Button, TextInput } from "react-native";
 import { useStopwatch } from "react-timer-hook";
-import { ThemedText } from "../themed-text";
-import { ThemedView } from "../themed-view";
-import { TasksContext } from "./TasksContextProvider";
 import { Time } from "./Time";
-const audioSource = require("./alarm.mp3");
+const audioSource = require("@/assets/audio/alarm.mp3");
 
 interface StopwatchProps {
   handleRest: (seconds: number, newBaseDuration: number) => void;
@@ -30,10 +30,13 @@ const Stopwatch = ({ handleRest }: StopwatchProps) => {
   useEffect(() => {
     let interval: number | null = null;
     if (isTimeCompleted) {
-      interval = setInterval(() => {
-        player.seekTo(0);
-        player.play();
-      }, 30 * 60 * 1000);
+      interval = setInterval(
+        () => {
+          player.seekTo(0);
+          player.play();
+        },
+        30 * 60 * 1000,
+      );
     }
     return () => {
       if (interval) {

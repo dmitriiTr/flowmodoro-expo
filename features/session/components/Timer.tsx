@@ -1,11 +1,11 @@
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
 import { useAudioPlayer } from "expo-audio";
 import { Button } from "react-native";
 import { useTimer } from "react-timer-hook";
-import { ThemedText } from "../themed-text";
-import { ThemedView } from "../themed-view";
+import { getTimeRest } from "../utils";
 import { Time } from "./Time";
-import { getTimeRest } from "./utils";
-const audioSource = require("./alarm.mp3");
+const audioSource = require("@/assets/audio/alarm.mp3");
 
 interface TimerProps {
   handleExit: () => void;

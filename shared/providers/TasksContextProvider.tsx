@@ -1,8 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { createContext, useEffect, useState } from "react";
-import { BASE_FOCUS_DURATION_MINUTES, LOCAL_STORAGE_KEY } from "./constants";
-import { Activity, Task } from "./types";
-import { nowString } from "./utils";
+import {
+  BASE_FOCUS_DURATION_MINUTES,
+  LOCAL_STORAGE_KEY,
+} from "../constants/common";
+import { Activity, Task } from "../types";
+import { nowString } from "../utils";
 
 export interface TasksContextType {
   tasks: Task[];
@@ -23,7 +26,7 @@ export const TasksContextProvider = ({ children }: ChildrenProps) => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [activity, setActivity] = useState<Activity>("work");
   const [baseFocusTime, setBaseFocusTime] = useState(
-    BASE_FOCUS_DURATION_MINUTES
+    BASE_FOCUS_DURATION_MINUTES,
   );
 
   const handleRest = (time: number, newBaseDuration: number) => {

@@ -1,8 +1,9 @@
+import { ThemedText } from "@/components/themed-text";
+import { ThemedView } from "@/components/themed-view";
+import { Task } from "@/shared/types";
+import { secondsToRoundedMinutes } from "@/shared/utils";
 import { FlatList, StyleSheet } from "react-native";
-import { ThemedText } from "../themed-text";
-import { ThemedView } from "../themed-view";
-import { Task } from "./types";
-import { groupTasks, secondsToRoundedMinutes } from "./utils";
+import { groupTasks } from "../utils";
 
 export const TasksTable = ({ tasks }: { tasks: Task[] }) => {
   const tasksGrouped = groupTasks(tasks);
